@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CampusHire - Campus Placement & Student Application Portal</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <main class="auth-screen" id="authScreen">
+    <section class="auth-story" aria-label="CampusHire introduction">
+      <a class="auth-brand" href="#" aria-label="CampusHire home">
+        <span class="auth-brand-mark">CH</span>
+        <span>CampusHire</span>
+      </a>
+      <div class="story-copy">
+        <p class="story-kicker"><span></span> CAMPUS PLACEMENT PORTAL</p>
+        <h1>Your next<br>chapter starts<br><em>on campus.</em></h1>
+        <p class="story-description">Find the right opportunity, keep your applications moving, and make your work
+          count.</p>
+      </div>
+      <div class="story-graphic" aria-hidden="true">
+        <div class="graphic-grid"></div>
+        <div class="graphic-track track-one"></div>
+        <div class="graphic-track track-two"></div>
+        <div class="graphic-node node-one"><span>01</span></div>
+        <div class="graphic-node node-two"><span>02</span></div>
+        <div class="graphic-node node-three"><span>03</span></div>
+        <div class="graphic-caption">A clearer route from classroom to career</div>
+      </div>
+      <div class="story-foot"><span>BUILT FOR WHAT'S NEXT</span><span>2026 / 27</span></div>
+    </section>
+
+    <section class="auth-panel" aria-label="Account access">
+      <div class="auth-panel-top"><span>WELCOME TO CAMPUSHIRE</span><span class="secure-indicator"><i></i> DEMO
+          ACCESS</span></div>
+      <div class="auth-form-wrap">
+        <div class="auth-heading">
+          <div class="auth-mobile-mark">CH</div>
+          <p class="auth-eyebrow" id="authEyebrow">YOUR CAREER, IN MOTION</p>
+          <h2 id="authTitle">Sign in</h2>
+          <p id="authSubtitle">Pick up where your next opportunity begins.</p>
+        </div>
+
+        <div class="auth-tabs" role="group" aria-label="Account access type">
+          <button type="button" class="auth-tab active" id="showLoginBtn" aria-pressed="true">Sign in</button>
+          <button type="button" class="auth-tab" id="showSignupBtn" aria-pressed="false">Create account</button>
+        </div>
+
+        <form id="loginForm" class="auth-form">
+          <label for="loginEmail">Email address</label>
+          <input id="loginEmail" name="email" type="email" autocomplete="email" placeholder="you@university.edu"
+            required>
+          <label for="loginPassword">Password</label>
+          <input id="loginPassword" name="password" type="password" autocomplete="current-password"
+            placeholder="Enter your password" required>
+          <p class="auth-message" id="loginMessage" role="status" aria-live="polite"></p>
+          <button class="auth-submit" type="submit"><span>Continue to CampusHire</span><b
+              aria-hidden="true">↗</b></button>
+        </form>
+
+        <form id="signupForm" class="auth-form" hidden>
+          <label for="signupName">Full name</label>
+          <input id="signupName" name="name" type="text" autocomplete="name" placeholder="Your name" required>
+          <label for="signupEmail">Email address</label>
+          <input id="signupEmail" name="email" type="email" autocomplete="email" placeholder="you@university.edu"
+            required>
+          <label for="signupPassword">Create password</label>
+          <input id="signupPassword" name="password" type="password" autocomplete="new-password" minlength="8"
+            placeholder="At least 8 characters" required>
+          <p class="auth-message" id="signupMessage" role="status" aria-live="polite"></p>
+          <button class="auth-submit" type="submit"><span>Create your account</span><b aria-hidden="true">↗</b></button>
+        </form>
+
+        <p class="auth-note">Demo access is stored in this browser. Use a unique password.</p>
+      </div>
+      <div class="auth-panel-foot"><span>© 2026 CAMPUSHIRE PLACEMENT CELL</span><span>STUDENT ACCESS</span></div>
+    </section>
+  </main>
+
+  <!-- Top Navigation Bar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="brand" onclick="switchTab('drives')">
+        <div class="brand-icon">🎓</div>
+        <div class="brand-info">
+          <h1>CampusHire</h1>
+          <span>Placement & Recruitment Portal</span>
+        </div>
+      </div>
+
+      <ul class="nav-links">
+        <li>
+          <button class="nav-item active" data-tab="drives">
+            🏢 Placement Drives
+          </button>
+        </li>
+        <li>
+          <button class="nav-item" data-tab="profile">
+            👤 Student Profile
+          </button>
+        </li>
+        <li>
+          <button class="nav-item" data-tab="applications">
+            📑 My Applications
+            <span class="nav-badge" id="navAppCount" style="display: none;">0</span>
+          </button>
+        </li>
+        <li>
+          <button class="nav-item" data-tab="admin">
+            ⚙️ Placement Officer
+          </button>
+        </li>
+      </ul>
+
+      <div class="user-quick-profile">
+        <button class="role-badge" id="roleToggleBtn" title="Click to switch between Student and Admin mode">
+          Mode: Student Candidate
+        </button>
+        <div class="avatar-chip" id="headerAvatarBtn" title="View / Edit Profile">
+          <div class="avatar-circle" id="headerAvatar">K</div>
+          <span id="headerStudentName">Kirsh Sundar</span>
+        </div>
+        <button class="sign-out-btn" id="signOutBtn" type="button" title="Sign out">Sign out</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Application Body -->
+  <main class="app-container">
+
+    <!-- Hero Placement Stats Banner -->
+    <section class="stats-banner">
+      <div class="stats-intro">
+        <h2>Campus Placement Season 2026</h2>
+        <p>Explore verified campus recruitment drives, check your academic eligibility, and apply with your
+          comprehensive student profile.</p>
+      </div>
+      <div class="stat-box">
+        <div class="stat-value" id="statActiveDrives">8</div>
+        <div class="stat-label">Active Drives</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-value" id="statMaxCtc">28.0 LPA</div>
+        <div class="stat-label">Highest Package</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-value" id="statAvgCtc">14.6 LPA</div>
+        <div class="stat-label">Average Package</div>
+      </div>
+    </section>
+
+    <!-- VIEW 1: PLACEMENT DRIVES -->
+    <section id="view-drives" class="view-section active">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Campus Placement Drives</h2>
+          <p class="section-subtitle" id="drivesCountLabel">Browse all active and upcoming company drives</p>
+        </div>
+        <div>
+          <button class="btn btn-outline btn-sm" onclick="switchTab('profile')">
+            ✏️ Edit Student Profile
+          </button>
+        </div>
+      </div>
+
+      <!-- Search and Filters Bar -->
+      <div class="filter-bar">
+        <div class="search-input-wrapper">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="searchDriveInput" placeholder="Search by company name, role, or skills...">
+        </div>
+
+        <select class="filter-select" id="filterBranch">
+          <option value="all">All Departments</option>
+          <option value="CSE">CSE</option>
+          <option value="IT">IT</option>
+          <option value="ECE">ECE</option>
+          <option value="EEE">EEE</option>
+          <option value="Mech">Mechanical</option>
+          <option value="Civil">Civil</option>
+        </select>
+
+        <select class="filter-select" id="sortDrives">
+          <option value="recommended">Sort: Recommended</option>
+          <option value="ctcHigh">CTC: High to Low</option>
+          <option value="ctcLow">CTC: Low to High</option>
+          <option value="deadline">Application Deadline</option>
+          <option value="company">Company (A-Z)</option>
+        </select>
+
+        <label
+          style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; cursor: pointer; user-select: none;">
+          <input type="checkbox" id="filterEligibleOnly" style="width: 16px; height: 16px; cursor: pointer;">
+          <span>Eligible for Me Only</span>
+        </label>
+      </div>
+
+      <!-- Drives Grid Container -->
+      <div class="drives-grid" id="drivesContainer">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </section>
+
+    <!-- VIEW 2: STUDENT PROFILE -->
+    <section id="view-profile" class="view-section">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Student Profile & Academic Details</h2>
+          <p class="section-subtitle">Ensure your details are up to date before applying to placement drives</p>
+        </div>
+        <div>
+          <button type="submit" form="studentProfileForm" class="btn btn-primary">
+            💾 Save Profile
+          </button>
+        </div>
+      </div>
+
+      <div class="profile-layout">
+        <!-- Main Form -->
+        <div class="profile-card">
+          <form id="studentProfileForm">
+            <h3
+              style="margin-bottom: 1.25rem; font-size: 1.1rem; color: var(--secondary); border-bottom: 1px solid var(--border); padding-bottom: 0.5rem;">
+              Personal & Contact Information
+            </h3>
+            <div class="form-grid" style="margin-bottom: 1.75rem;">
+              <div class="form-group">
+                <label for="profFullName">Full Name <span class="required">*</span></label>
+                <input type="text" id="profFullName" class="form-control" placeholder="e.g. Kirsh Sundar" required>
+              </div>
+              <div class="form-group">
+                <label for="profRollNo">Roll No / University USN <span class="required">*</span></label>
+                <input type="text" id="profRollNo" class="form-control" placeholder="e.g. 2022CSE042" required>
+              </div>
+              <div class="form-group">
+                <label for="profEmail">University / Personal Email <span class="required">*</span></label>
+                <input type="email" id="profEmail" class="form-control" placeholder="e.g. student@university.edu"
+                  required>
+              </div>
+              <div class="form-group">
+                <label for="profPhone">Mobile Number <span class="required">*</span></label>
+                <input type="tel" id="profPhone" class="form-control" placeholder="e.g. +91 98765 43210" required>
+              </div>
+              <div class="form-group full-width">
+                <label for="profCollege">College / Institution Name</label>
+                <input type="text" id="profCollege" class="form-control"
+                  placeholder="e.g. College of Engineering & Technology">
+              </div>
+            </div>
+
+            <h3
+              style="margin-bottom: 1.25rem; font-size: 1.1rem; color: var(--secondary); border-bottom: 1px solid var(--border); padding-bottom: 0.5rem;">
+              Academic Credentials
+            </h3>
+            <div class="form-grid" style="margin-bottom: 1.75rem;">
+              <div class="form-group">
+                <label for="profDegree">Degree Program</label>
+                <select id="profDegree" class="form-control">
+                  <option value="B.Tech">B.Tech / B.E.</option>
+                  <option value="M.Tech">M.Tech</option>
+                  <option value="MCA">MCA</option>
+                  <option value="BCA">BCA</option>
+                  <option value="B.Sc">B.Sc Computer Science</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="profBranch">Department / Branch <span class="required">*</span></label>
+                <select id="profBranch" class="form-control" required>
+                  <option value="CSE">Computer Science & Engineering (CSE)</option>
+                  <option value="IT">Information Technology (IT)</option>
+                  <option value="ECE">Electronics & Communication (ECE)</option>
+                  <option value="EEE">Electrical & Electronics (EEE)</option>
+                  <option value="Mech">Mechanical Engineering</option>
+                  <option value="Civil">Civil Engineering</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="profBatch">Graduation Batch <span class="required">*</span></label>
+                <input type="text" id="profBatch" class="form-control" placeholder="e.g. 2026" required>
+              </div>
+              <div class="form-group">
+                <label for="profCgpa">Current CGPA (Scale of 10) <span class="required">*</span></label>
+                <input type="number" step="0.01" min="0" max="10" id="profCgpa" class="form-control"
+                  placeholder="e.g. 8.40" required>
+              </div>
+              <div class="form-group">
+                <label for="profTenth">Class 10th Percentage (%)</label>
+                <input type="number" step="0.1" min="0" max="100" id="profTenth" class="form-control"
+                  placeholder="e.g. 92.5">
+              </div>
+              <div class="form-group">
+                <label for="profTwelfth">Class 12th / Diploma (%)</label>
+                <input type="number" step="0.1" min="0" max="100" id="profTwelfth" class="form-control"
+                  placeholder="e.g. 90.0">
+              </div>
+              <div class="form-group full-width">
+                <label for="profBacklogs">Active Backlogs Count <span class="required">*</span></label>
+                <input type="number" min="0" id="profBacklogs" class="form-control" value="0" required>
+                <span class="form-hint">Enter 0 if you have cleared all exams without active arrears.</span>
+              </div>
+            </div>
+
+            <h3
+              style="margin-bottom: 1.25rem; font-size: 1.1rem; color: var(--secondary); border-bottom: 1px solid var(--border); padding-bottom: 0.5rem;">
+              Skills & Portfolio Assets
+            </h3>
+            <div class="form-grid">
+              <div class="form-group full-width">
+                <label>Technical Skills (Type skill and press Enter or comma)</label>
+                <div class="skills-input-area" id="skillsContainer">
+                  <input type="text" id="skillsInputField" class="skills-input-field"
+                    placeholder="Add skill (e.g. React, Java, Docker)...">
+                </div>
+              </div>
+              <div class="form-group full-width">
+                <label for="profResumeUrl">Resume Document URL / Link <span class="required">*</span></label>
+                <div style="display: flex; gap: 0.5rem;">
+                  <input type="url" id="profResumeUrl" class="form-control"
+                    placeholder="https://drive.google.com/... or cloud link">
+                  <label class="btn btn-secondary btn-sm" style="margin: 0; cursor: pointer;">
+                    📁 Attach File
+                    <input type="file" id="profResumeFile" accept=".pdf,.doc,.docx" style="display: none;">
+                  </label>
+                </div>
+                <span class="form-hint">Provide a direct link to your PDF resume or click Attach File.</span>
+              </div>
+              <div class="form-group">
+                <label for="profGithubUrl">GitHub Profile URL</label>
+                <input type="url" id="profGithubUrl" class="form-control" placeholder="https://github.com/username">
+              </div>
+              <div class="form-group">
+                <label for="profLinkedinUrl">LinkedIn Profile URL</label>
+                <input type="url" id="profLinkedinUrl" class="form-control"
+                  placeholder="https://linkedin.com/in/username">
+              </div>
+            </div>
+
+            <div style="margin-top: 2rem; display: flex; justify-content: flex-end; gap: 0.75rem;">
+              <button type="submit" class="btn btn-primary">
+                💾 Save & Update Profile
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Sidebar Summary & Completeness -->
+        <div class="profile-summary-card">
+          <div>
+            <h3 style="font-size: 1.1rem; color: var(--secondary); margin-bottom: 0.25rem;">Profile Completeness</h3>
+            <p style="font-size: 0.8rem; color: var(--text-muted);">A 100% complete profile boosts recruiter
+              shortlisting</p>
+          </div>
+
+          <div class="score-meter">
+            <div class="score-number" id="profileScoreNum">100%</div>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" id="profileProgressBar" style="width: 100%;"></div>
+            </div>
+            <span style="font-size: 0.8rem; color: var(--text-muted);">Application Ready</span>
+          </div>
+
+          <ul class="checklist">
+            <li class="checklist-item done" id="checkPersonal">
+              <span class="icon">✓</span>
+              <span>Contact details filled</span>
+            </li>
+            <li class="checklist-item done" id="checkAcademic">
+              <span class="icon">✓</span>
+              <span>Degree, Branch & CGPA</span>
+            </li>
+            <li class="checklist-item done" id="checkSkills">
+              <span class="icon">✓</span>
+              <span>Key technical skills added</span>
+            </li>
+            <li class="checklist-item done" id="checkResume">
+              <span class="icon">✓</span>
+              <span>Resume PDF attached</span>
+            </li>
+            <li class="checklist-item done" id="checkLinks">
+              <span class="icon">✓</span>
+              <span>GitHub / LinkedIn connected</span>
+            </li>
+          </ul>
+
+          <div
+            style="background-color: var(--primary-light); padding: 1rem; border-radius: var(--radius-md); font-size: 0.85rem; color: #1e40af;">
+            💡 <strong>Eligibility Tip:</strong> Your branch and CGPA are automatically checked against company criteria
+            when browsing drives.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 3: MY APPLICATIONS -->
+    <section id="view-applications" class="view-section">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">My Job Applications</h2>
+          <p class="section-subtitle">Track your application progress and recruitment drive interview stages</p>
+        </div>
+        <div style="display: flex; gap: 0.5rem; align-items: center;">
+          <span class="status-badge applied" id="appliedCountBadge">0 Applied</span>
+          <button class="btn btn-primary btn-sm" onclick="switchTab('drives')">
+            + Apply for More Drives
+          </button>
+        </div>
+      </div>
+
+      <div id="applicationsContainer">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </section>
+
+    <!-- VIEW 4: ADMIN DASHBOARD -->
+    <section id="view-admin" class="view-section">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Placement Officer Dashboard</h2>
+          <p class="section-subtitle">Manage recruitment drives, review applicants, and export university placement
+            records</p>
+        </div>
+        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+          <button class="btn btn-secondary btn-sm" id="resetDemoDataBtn">
+            🔄 Reset Demo Data
+          </button>
+          <button class="btn btn-outline btn-sm" id="exportCsvBtn">
+            📥 Export Applicants (CSV)
+          </button>
+          <button class="btn btn-primary btn-sm" id="openAddDriveModalBtn">
+            ➕ Post New Drive
+          </button>
+        </div>
+      </div>
+
+      <!-- Admin Stats Summary -->
+      <div class="admin-stats-grid">
+        <div class="admin-stat-card">
+          <div class="title">Total Drives</div>
+          <div class="count" id="adminTotalDrives">8</div>
+        </div>
+        <div class="admin-stat-card">
+          <div class="title">Total Applications</div>
+          <div class="count" id="adminTotalApps">0</div>
+        </div>
+        <div class="admin-stat-card">
+          <div class="title">Shortlisted / Interviewing</div>
+          <div class="count" id="adminShortlistedCount" style="color: #7c3aed;">0</div>
+        </div>
+        <div class="admin-stat-card">
+          <div class="title">Offers Released</div>
+          <div class="count" id="adminSelectedCount" style="color: #059669;">0</div>
+        </div>
+      </div>
+
+      <!-- Candidate Applications Management -->
+      <div style="margin-top: 1rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+          <h3 style="font-size: 1.15rem; color: var(--secondary);">Student Applications Management</h3>
+          <span style="font-size: 0.85rem; color: var(--text-muted);">Change status below to notify candidates</span>
+        </div>
+        <div id="adminApplicantsContainer">
+          <!-- Rendered dynamically by app.js -->
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MODAL: APPLICATION SUBMISSION -->
+  <div class="modal-overlay" id="applyModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title">Apply for Placement Drive</h3>
+        <button class="modal-close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div
+          style="background: var(--surface-alt); padding: 1rem; border-radius: var(--radius-md); display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <h4 id="applyModalCompany" style="font-size: 1.1rem; color: var(--secondary); font-weight: 700;">Google</h4>
+            <p id="applyModalRole" style="color: var(--primary); font-size: 0.9rem; font-weight: 600;">Software
+              Development Engineer</p>
+            <span id="applyModalLocation" style="font-size: 0.8rem; color: var(--text-muted);">📍 Bangalore</span>
+          </div>
+          <div style="text-align: right;">
+            <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Package (CTC)</div>
+            <div id="applyModalCtc" style="font-size: 1.1rem; font-weight: 800; color: #059669;">28.0 LPA</div>
+          </div>
+        </div>
+
+        <!-- Eligibility Status Box -->
+        <div class="eligibility-box" id="applyEligibilityBox">
+          <div class="icon">✓</div>
+          <div id="applyEligibilityText" style="font-size: 0.875rem;">
+            <strong>Eligible for this drive!</strong> Your profile matches all academic requirements.
+          </div>
+        </div>
+
+        <!-- Student Snapshot Review -->
+        <div>
+          <h4 style="font-size: 0.9rem; margin-bottom: 0.5rem; color: var(--secondary);">Candidate Details Snapshot</h4>
+          <div
+            style="background: #f8fafc; border: 1px solid var(--border); border-radius: var(--radius-md); padding: 0.875rem; font-size: 0.85rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+            <div><strong>Name:</strong> <span id="applyCandidateName">Kirsh Sundar</span></div>
+            <div><strong>Roll No:</strong> <span id="applyCandidateRoll">2022CSE042</span></div>
+            <div><strong>Branch:</strong> <span id="applyCandidateBranch">CSE</span></div>
+            <div><strong>CGPA:</strong> <span id="applyCandidateCgpa">8.4 CGPA</span></div>
+            <div><strong>Backlogs:</strong> <span id="applyCandidateBacklogs">0</span></div>
+            <div><strong>Resume:</strong> <span id="applyCandidateResume"
+                style="word-break: break-all; color: var(--primary);">Attached</span></div>
+          </div>
+        </div>
+
+        <!-- Optional Cover Note -->
+        <div class="form-group">
+          <label for="applyCoverNote">Cover Note / Special Remarks (Optional)</label>
+          <textarea id="applyCoverNote" class="form-control" rows="3"
+            placeholder="Highlight relevant projects, certifications, or why you are a great fit for this position..."></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button class="btn btn-primary" id="confirmApplyBtn">Submit Application</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: DRIVE FULL DETAILS -->
+  <div class="modal-overlay" id="driveDetailModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div>
+          <h3 class="modal-title" id="detailModalCompany">Company Details</h3>
+          <p id="detailModalRole"
+            style="color: var(--primary); font-size: 0.95rem; font-weight: 600; margin-top: 0.2rem;"></p>
+        </div>
+        <button class="modal-close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="drive-highlights">
+          <div class="highlight-item">
+            <span class="highlight-label">Package (CTC)</span>
+            <span class="highlight-val ctc" id="detailModalCtc"></span>
+          </div>
+          <div class="highlight-item">
+            <span class="highlight-label">Location</span>
+            <span class="highlight-val" id="detailModalLocation"></span>
+          </div>
+          <div class="highlight-item">
+            <span class="highlight-label">Min CGPA</span>
+            <span class="highlight-val" id="detailModalMinCgpa"></span>
+          </div>
+          <div class="highlight-item">
+            <span class="highlight-label">Allowed Backlogs</span>
+            <span class="highlight-val" id="detailModalBacklogs"></span>
+          </div>
+        </div>
+
+        <div>
+          <strong style="font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase;">Eligible
+            Branches:</strong>
+          <div id="detailModalBranches"
+            style="font-size: 0.95rem; font-weight: 600; color: var(--secondary); margin-top: 0.2rem;"></div>
+        </div>
+
+        <div>
+          <strong style="font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase;">Important
+            Dates:</strong>
+          <div style="font-size: 0.9rem; margin-top: 0.25rem;">
+            Application Deadline: <strong id="detailModalDeadline"></strong> | Drive Date: <strong
+              id="detailModalDriveDate"></strong>
+          </div>
+        </div>
+
+        <div>
+          <strong style="font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase;">Job Description &
+            Overview:</strong>
+          <p id="detailModalDesc"
+            style="font-size: 0.9rem; color: var(--text-main); margin-top: 0.4rem; line-height: 1.6;"></p>
+        </div>
+
+        <div>
+          <strong style="font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase;">Selection Process /
+            Rounds:</strong>
+          <ul id="detailModalRounds"
+            style="margin-left: 1.25rem; font-size: 0.875rem; color: var(--text-main); margin-top: 0.4rem; display: flex; flex-direction: column; gap: 0.35rem;">
+          </ul>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button class="btn btn-primary" id="detailModalApplyBtn">Apply Now</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: APPLICATION SLIP / RECEIPT -->
+  <div class="modal-overlay" id="appSlipModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title">Application Slip</h3>
+        <button class="modal-close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div style="text-align: center; padding: 1rem 0; border-bottom: 2px dashed var(--border);">
+          <div style="font-size: 2rem; margin-bottom: 0.25rem;">🎓</div>
+          <h4 style="font-size: 1.2rem; color: var(--secondary); font-weight: 700;">Campus Placement Cell</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Official Application Acknowledgment</p>
+          <div style="margin-top: 0.5rem;">
+            <span
+              style="background: var(--surface-alt); padding: 0.25rem 0.75rem; border-radius: var(--radius-full); font-family: monospace; font-size: 0.9rem; font-weight: 700; color: var(--primary);"
+              id="slipAppId"></span>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; font-size: 0.9rem; padding: 0.5rem 0;">
+          <div><span style="color: var(--text-muted);">Company:</span>
+            <div style="font-weight: 700;" id="slipCompany"></div>
+          </div>
+          <div><span style="color: var(--text-muted);">Position:</span>
+            <div style="font-weight: 700;" id="slipRole"></div>
+          </div>
+          <div><span style="color: var(--text-muted);">Offered CTC:</span>
+            <div style="font-weight: 700; color: #059669;" id="slipCtc"></div>
+          </div>
+          <div><span style="color: var(--text-muted);">Submission Date:</span>
+            <div style="font-weight: 600;" id="slipDate"></div>
+          </div>
+          <div style="grid-column: 1 / -1;"><span style="color: var(--text-muted);">Current Status:</span>
+            <div id="slipStatus" style="margin-top: 0.25rem;"></div>
+          </div>
+        </div>
+
+        <div style="border-top: 1px solid var(--border); padding-top: 0.75rem; font-size: 0.85rem;">
+          <h5 style="color: var(--secondary); margin-bottom: 0.5rem;">Candidate Information</h5>
+          <div style="color: var(--text-muted); line-height: 1.6;">
+            Name: <strong style="color: var(--text-main);" id="slipCandidateName"></strong><br>
+            Roll No: <strong style="color: var(--text-main);" id="slipCandidateRoll"></strong> | Branch: <strong
+              style="color: var(--text-main);" id="slipCandidateBranch"></strong><br>
+            CGPA: <strong style="color: var(--text-main);" id="slipCandidateCgpa"></strong><br>
+            Resume: <span style="word-break: break-all;" id="slipCandidateResume"></span><br>
+            Remarks: <span id="slipCoverNote" style="font-style: italic;"></span>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="window.print()">🖨️ Print Slip</button>
+        <button class="btn btn-primary" data-dismiss="modal">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: ADD NEW PLACEMENT DRIVE (ADMIN) -->
+  <div class="modal-overlay" id="addDriveModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title">Post New Campus Drive</h3>
+        <button class="modal-close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="addDriveForm">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="newDriveCompany">Company Name <span class="required">*</span></label>
+              <input type="text" id="newDriveCompany" class="form-control" placeholder="e.g. Oracle" required>
+            </div>
+            <div class="form-group">
+              <label for="newDriveRole">Job Role / Designation <span class="required">*</span></label>
+              <input type="text" id="newDriveRole" class="form-control" placeholder="e.g. Server Technology Engineer"
+                required>
+            </div>
+            <div class="form-group">
+              <label for="newDriveCtc">Annual Package (CTC) <span class="required">*</span></label>
+              <input type="text" id="newDriveCtc" class="form-control" placeholder="e.g. 15.5 LPA" required>
+            </div>
+            <div class="form-group">
+              <label for="newDriveLocation">Job Location(s)</label>
+              <input type="text" id="newDriveLocation" class="form-control" placeholder="e.g. Bangalore / Remote"
+                value="Bangalore">
+            </div>
+            <div class="form-group">
+              <label for="newDriveMinCgpa">Minimum CGPA Required <span class="required">*</span></label>
+              <input type="number" step="0.1" min="0" max="10" id="newDriveMinCgpa" class="form-control" value="7.0"
+                required>
+            </div>
+            <div class="form-group">
+              <label for="newDriveBacklogs">Max Backlogs Allowed</label>
+              <input type="number" min="0" id="newDriveBacklogs" class="form-control" value="0">
+            </div>
+            <div class="form-group">
+              <label for="newDriveDeadline">Application Deadline <span class="required">*</span></label>
+              <input type="date" id="newDriveDeadline" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="newDriveBranches">Eligible Branches (Multi-select)</label>
+              <select id="newDriveBranches" class="form-control" multiple size="4">
+                <option value="All Branches" selected>All Branches</option>
+                <option value="CSE">CSE</option>
+                <option value="IT">IT</option>
+                <option value="ECE">ECE</option>
+                <option value="EEE">EEE</option>
+                <option value="Mech">Mechanical</option>
+                <option value="Civil">Civil</option>
+              </select>
+            </div>
+            <div class="form-group full-width">
+              <label for="newDriveDesc">Job Description & Skill Requirements</label>
+              <textarea id="newDriveDesc" class="form-control" rows="3"
+                placeholder="Outline primary responsibilities, required skills, and drive eligibility details..."></textarea>
+            </div>
+          </div>
+          <div class="modal-footer" style="margin-top: 1.5rem; padding: 1rem 0 0 0; background: transparent;">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn btn-primary">Publish Drive</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    <div class="container">
+      <p>&copy; 2026 CampusHire Placement Cell. Built for seamless student hiring and placement management.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="app.js"></script>
+</body>
+
+</html>
